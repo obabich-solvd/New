@@ -11,6 +11,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.16" level="project" />
     <orderEntry type="library" name="Maven: com.qaprosoft:carina-core:6.3.30" level="project" />
     <orderEntry type="library" name="Maven: com.qaprosoft:carina-dataprovider:6.3.30" level="project" />
     <orderEntry type="library" name="Maven: com.qaprosoft:carina-commons:6.3.30" level="project" />
