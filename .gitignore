@@ -1,0 +1,12 @@
+*.class
+.mtj.tmp/
+*.jar
+.settings
+target
+.classpath
+.project
+.idea
+reports
+*.log
+*.iml
+*.DS_Store
