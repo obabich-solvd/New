@@ -8,6 +8,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class InfoTest {
 
@@ -18,28 +20,20 @@ public class InfoTest {
         info.setUuid("uuid");
         info.setPhone("phone");
         info.setEmail("email");
+        String newInfo = mapper.writerWithDefaultPrettyPrinter()
+                .writeValueAsString(info);
 
-        System.out.println(mapper.writerWithDefaultPrettyPrinter()
-                .writeValueAsString(info));
-
-        FileWriter file = new FileWriter("info.json");
-        file.write(mapper.writerWithDefaultPrettyPrinter()
-                .writeValueAsString(info));
-        file.flush();
-        file.close();
-
-
+        Files.write(Paths.get("my-file.json"), newInfo.getBytes());
     }
 
     @Test
     public void read() throws FileNotFoundException, ParseException {
         JSONParser parser = new JSONParser();
 
-        Object obj = parser.parse(new FileReader("info.json"));
+        Object obj = parser.parse(new FileReader("my-file.json"));
         ObjectMapper mapper1 = new ObjectMapper();
         Info info = mapper1.convertValue(obj, Info.class);
         String email = info.getEmail();
         System.out.println(email);
     }
-
 }
