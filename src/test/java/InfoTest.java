@@ -1,9 +1,11 @@
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import net.minidev.json.parser.JSONParser;
 import net.minidev.json.parser.ParseException;
 import org.testng.annotations.Test;
 
+import javax.xml.transform.Result;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -12,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class InfoTest {
+    Gson gson = new Gson();
 
     @Test
     public void write() throws IOException {
@@ -27,13 +30,11 @@ public class InfoTest {
     }
 
     @Test
-    public void read() throws FileNotFoundException, ParseException {
-        JSONParser parser = new JSONParser();
+    public void read() throws FileNotFoundException {
 
-        Object obj = parser.parse(new FileReader("my-file.json"));
-        ObjectMapper mapper1 = new ObjectMapper();
-        Info info = mapper1.convertValue(obj, Info.class);
-        String email = info.getEmail();
-        System.out.println(email);
+        Info info = gson.fromJson(new FileReader("my-file.json"), Info.class);
+        System.out.println("uuid" +"  "+ info.getUuid());
+        System.out.println("email" +"  "+info.getEmail());
+        System.out.println("phone" +"  "+info.getPhone());
     }
 }
