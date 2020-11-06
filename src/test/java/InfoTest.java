@@ -22,24 +22,24 @@ public class InfoTest {
         System.out.println(mapper.writerWithDefaultPrettyPrinter()
                 .writeValueAsString(info));
 
-            FileWriter file = new FileWriter("info.json");
-            file.write(mapper.writerWithDefaultPrettyPrinter()
-                    .writeValueAsString(info));
-            file.flush();
-            file.close();
+        FileWriter file = new FileWriter("info.json");
+        file.write(mapper.writerWithDefaultPrettyPrinter()
+                .writeValueAsString(info));
+        file.flush();
+        file.close();
 
 
     }
 
     @Test
-    public void read() throws FileNotFoundException, ParseException{
-             JSONParser parser = new JSONParser();
+    public void read() throws FileNotFoundException, ParseException {
+        JSONParser parser = new JSONParser();
 
-            Object obj = parser.parse(new FileReader("info.json"));
-            ObjectMapper mapper1 = new ObjectMapper();
-            Info info = mapper1.convertValue(obj, Info.class);
-            String email = info.getEmail();
-            System.out.println(email);
+        Object obj = parser.parse(new FileReader("info.json"));
+        ObjectMapper mapper1 = new ObjectMapper();
+        Info info = mapper1.convertValue(obj, Info.class);
+        String email = info.getEmail();
+        System.out.println(email);
     }
 
 }
